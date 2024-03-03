@@ -1,5 +1,3 @@
-# hardqode-project
-HardQode test project
 
 # 👨‍💻 Онлайн-курсы 
 ## _HardQode test project_
@@ -42,11 +40,11 @@ HardQode test project
 * Swagger: http://127.0.0.1:8000/api/v1/swagger/
 * ReDoc: http://127.0.0.1:8000/api/v1/redoc/
 
-<details><summary>### __Примеры запросов__</summary>
+### __Примеры запросов__
 
-**GET:** http://127.0.0.1:8000/api/v1/courses/  - показать список всех курсов.
+<details><summary> GET: http://127.0.0.1:8000/api/v1/courses/  - показать список всех курсов.</summary>
 
-**200 OK:**
+    200 OK:
     ```
     [
         {
@@ -107,10 +105,11 @@ HardQode test project
         }
     ]
     ```
+</details>
 
-**GET:** http://127.0.0.1:8000/api/v1/courses/2/lessons/  - показать список уроков определенного курса.
+<details><summary> GET: http://127.0.0.1:8000/api/v1/courses/2/lessons/  - показать список уроков определенного курса.</summary>
 
-**200 OK:**
+    200 OK:
     ```
     [
         {
@@ -130,10 +129,11 @@ HardQode test project
         }
     ]
     ```
+</details>
 
-**GET:** http://127.0.0.1:8000/api/v1/courses/2/groups/  - показать список групп определенного курса.
+<details><summary> GET: http://127.0.0.1:8000/api/v1/courses/2/groups/  - показать список групп определенного курса.</summary> 
 
-**200 OK:**
+    200 OK:
     ```
     [
         {
