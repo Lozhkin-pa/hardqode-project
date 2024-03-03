@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    'users.apps.UsersConfig',
-    'courses.apps.CoursesConfig',
     'api.apps.ApiConfig',
+    'courses.apps.CoursesConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'product.urls'
+ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
     {
@@ -136,13 +136,15 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ],
 }
 
 DJOSER = {
     "SERIALIZERS": {
-        "user": "api.v1.serializers.users_serializer.CustomUserSerializer",
-        "current_user": "api.v1.serializers.users_serializer.CustomUserSerializer",
+        "user": "api.v1.serializers.user_serializer.CustomUserSerializer",
+        "current_user": "api.v1.serializers.user_serializer.CustomUserSerializer",
     },
     "LOGIN_FIELD": "email",
 }

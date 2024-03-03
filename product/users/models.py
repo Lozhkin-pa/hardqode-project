@@ -1,6 +1,7 @@
-from courses.models import Group
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+from courses.models import Course, Group
 
 
 class CustomUser(AbstractUser):
@@ -32,4 +33,35 @@ class CustomUser(AbstractUser):
         ordering = ('-id',)
 
     def __str__(self):
-        return self.username
+        return self.get_full_name()
+
+
+class Subscription(models.Model):
+    """Модель подписки пользователя на курс."""
+
+    student = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+        verbose_name='Студент'
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name='subscriptions',
+        verbose_name='Курс'
+    )
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
+        ordering = ('-id',)
+        constraints = [
+            models.UniqueConstraint(
+                fields=['student', 'course'],
+                name='unique_student_course',
+            )
+        ]
+
+    def __str__(self):
+        return f'{self.student} подписан на курс {self.course}'
